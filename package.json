@@ -1,0 +1,36 @@
+{
+  "name": "spend-buddy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Spend Buddy authentication starter: Next.js, NestJS and Keycloak",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": "^22.12.0 || ^24.0.0",
+    "npm": ">=10"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "concurrently --kill-others --names web,api --prefix-colors cyan,green \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "npm run dev --workspace=@spend-buddy/web",
+    "dev:api": "npm run dev --workspace=@spend-buddy/api",
+    "start": "concurrently --kill-others --names web,api \"npm run start --workspace=@spend-buddy/web\" \"npm run start --workspace=@spend-buddy/api\"",
+    "lint": "npm run lint --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test --workspaces",
+    "build": "npm run build --workspaces",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@types/node": "^22.19.0",
+    "concurrently": "^9.2.1",
+    "eslint": "9.39.5",
+    "prettier": "^3.6.2",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0"
+  }
+}
